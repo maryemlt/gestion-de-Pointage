@@ -1,9 +1,10 @@
+// src/users/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export type UserDocument = User & Document;
+export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class User {
   @Prop({ required: true })
   nom: string;
@@ -14,23 +15,17 @@ export class User {
   @Prop({ required: true })
   motDePasse: string;
 
-  @Prop({ enum: ['admin', 'employe', 'stagiaire'], default: 'employe' })
+  @Prop({ required: true })
   role: string;
 
   @Prop()
-  poste: string;
+  poste?: string;
 
   @Prop()
-  qrCode: string;
+  qrCode?: string;
 
   @Prop()
-  faceData: string;
-
-  @Prop({ type: Object })
-  localisationAutorisee: {
-    lat: number;
-    lng: number;
-  };
+  faceData?: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
