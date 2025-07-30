@@ -9,17 +9,19 @@ export class Attendance {
   userId: string;
 
   @Prop({ required: true })
-  date: string; // YYYY-MM-DD
+  date: string;
 
-  @Prop()
-  checkIn: string; // HH:mm
+  @Prop({ default: null })
+  checkIn: string;
 
-  @Prop()
-  checkOut: string; // HH:mm
+  @Prop({ default: null })
+  checkOut: string;
 
   @Prop({ default: 0 })
-  hoursWorked: number; // en heures
+  hoursWorked: number;
+
+  @Prop({ required: true })
+  status: string;
 }
 
-// ✅ Très important : exporter le schema
 export const AttendanceSchema = SchemaFactory.createForClass(Attendance);
