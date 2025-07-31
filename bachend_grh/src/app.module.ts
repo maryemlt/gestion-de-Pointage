@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { AttendanceModule } from './attendance/attendance.module';
 import { LeavesModule } from './leaves/leaves.module';
 import { ReportsModule } from './reports/reports.module';
+import { OvertimeModule } from './overtime/overtime.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ReportsModule } from './reports/reports.module';
     AttendanceModule,
     LeavesModule,
     ReportsModule, // ✅ ici
+      OvertimeModule, // ✅ Ajouter ici
   ],
 })
 export class AppModule {}
